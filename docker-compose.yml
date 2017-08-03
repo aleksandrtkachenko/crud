@@ -3,7 +3,7 @@ services:
 
     mysql:
       image: mysql:5.7
-      container_name: phpschool-mysql
+      container_name: crud-mysql
       working_dir: /application
       environment:
         - MYSQL_ROOT_PASSWORD=root
@@ -11,28 +11,28 @@ services:
         - MYSQL_USER=root
         - MYSQL_PASSWORD=root
 
-    postgres:
-      image: postgres:9.6-alpine
-      container_name: phpschool-postgres
-      working_dir: /application
-      environment:
-        - POSTGRES_USER=root
-        - POSTGRES_PASSWORD=root
-        - POSTGRES_DB=phpschool
-
-    clickhouse:
-      image: yandex/clickhouse-server:latest
-      container_name: phpschool-clickhouse
-      working_dir: /application
-
-    redis:
-      image: redis:alpine
-      container_name: phpschool-redis
-      working_dir: /application
+#    postgres:
+#      image: postgres:9.6-alpine
+#      container_name: phpschool-postgres
+#      working_dir: /application
+#      environment:
+#        - POSTGRES_USER=root
+#        - POSTGRES_PASSWORD=root
+#        - POSTGRES_DB=phpschool
+#
+#    clickhouse:
+#      image: yandex/clickhouse-server:latest
+#      container_name: phpschool-clickhouse
+#      working_dir: /application
+#
+#    redis:
+#      image: redis:alpine
+#      container_name: phpschool-redis
+#      working_dir: /application
 
     ubuntu:
       image: composer:latest
-      container_name: phpschool-composer
+      container_name: crud-composer
       ports:
         - "8000:8000"
       command: php -S 0.0.0.0:8000 -t /var/www/phpschool
@@ -41,6 +41,6 @@ services:
 
       links:
         - mysql
-        - postgres
-        - clickhouse
-        - redis
+#        - postgres
+#        - clickhouse
+#        - redis
